@@ -17,8 +17,8 @@ public class SharonBehaviour : MonoBehaviour
     private static Random rnd = new Random();
 
     private float lastAttackTime;
-       private float birth = 0.0f;
-   private float age = 0.0f;
+    private    float birth = 0.0f;
+    private float age = 0.0f;
 
 private enum AttackType {
     Alcohol,
@@ -30,15 +30,15 @@ private enum AttackType {
     {
         Debug.Log("Starting Sharon!");
         birth = Time.realtimeSinceStartup;
-        lastAttackTime = birth;
+        lastAttackTime = 0;
         playerTom = GameObject.FindGameObjectWithTag("Player");
     }
 
     void LayFloorCone()
     {
-            Vector2 direction = transform.up;
-            GameObject cone = Instantiate(floorConePrefab, transform.position + (Vector3)direction * 0.5f, Quaternion.identity);
-            cone.transform.rotation = transform.rotation;
+        Vector2 direction = transform.up;
+        GameObject cone = Instantiate(floorConePrefab, transform.position + (Vector3)direction * 0.5f, Quaternion.identity);
+        cone.transform.rotation = transform.rotation;
     }
 
     // Update is called once per frame
