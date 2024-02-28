@@ -14,7 +14,9 @@ public class SharonBehaviour : MonoBehaviour
 
     private static Random rnd = new Random();
 
-    private float lastAttackTime = 0.0f;
+    private float lastAttackTime;
+       private float birth = 0.0f;
+   private float age = 0.0f;
 
 private enum AttackType {
     Alcohol,
@@ -23,6 +25,9 @@ private enum AttackType {
 
     void Start()
     {
+        Debug.Log("Starting Sharon!");
+        birth = Time.realtimeSinceStartup;
+        lastAttackTime = birth;
         playerTom = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -36,6 +41,7 @@ private enum AttackType {
     // Update is called once per frame
     void Update()
     {
+    this.age=Time.realtimeSinceStartup-birth;
     if (playerTom == null){
         return;
     }
@@ -45,8 +51,8 @@ private enum AttackType {
     //update the position
     transform.position = transform.position + new Vector3(difference.x * movementSpeed * Time.deltaTime, difference.y * movementSpeed * Time.deltaTime, 0);
 
-    if (Time.realtimeSinceStartup - lastAttackTime > 12.0f){
-        lastAttackTime = Time.realtimeSinceStartup;
+    if (age - lastAttackTime > 5.0f){
+        lastAttackTime = age;
         Debug.Log("Sharon is attacking!");
         Array values = AttackType.GetValues(typeof(AttackType));
         AttackType randomAttack = (AttackType)values.GetValue(rnd.Next(values.Length));
