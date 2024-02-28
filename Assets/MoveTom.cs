@@ -16,6 +16,9 @@ public class MoveTom : MonoBehaviour
     public float rotationSpeed = 100f; // Rotation speed in degrees per second
 
     public GameObject projectilePrefab;
+    public GameObject vignettePrefab;
+
+    private GameObject vignette;
 
     public InputAction launchAction;
     
@@ -38,11 +41,22 @@ public class MoveTom : MonoBehaviour
         lives = 3;
     }
 
+    public void MakeDrunk(){
+        if (vignette == null){
+            vignette = Instantiate(vignettePrefab, transform.position, Quaternion.identity);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {    
         horizontal = 0.0f;
         vertical = 0.0f;
+
+        if (Keyboard.current.vKey.isPressed)
+        {
+            MakeDrunk();
+        }
 
         if (Keyboard.current.wKey.isPressed) {
             vertical = 1.0f;
