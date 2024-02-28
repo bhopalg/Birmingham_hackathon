@@ -10,6 +10,8 @@ public class SharonBehaviour : MonoBehaviour
 
     private GameObject playerTom;
 
+    public GameObject projectilePrefab;
+
     private static Random rnd = new Random();
 
     private float lastAttackTime;
@@ -17,7 +19,7 @@ public class SharonBehaviour : MonoBehaviour
    private float age = 0.0f;
 
 private enum AttackType {
-    Alcohol,
+    Alcohol, MarsBar
 }
 
     void Start()
@@ -51,7 +53,22 @@ private enum AttackType {
                 Debug.Log("Sharon is attacking with alcohol!");
                 MoveTom.instance.MakeDrunk();
                 break;
+            case AttackType.MarsBar:
+                Debug.Log("Sharon is attacking with a MarsBar!");
+                Launch();
+                break;
+            
             }
         }
+    }
+
+    void Launch()
+    {
+        Vector3 direction = playerTom.transform.position - transform.position;
+        float force = 20;
+        GameObject projectile = Instantiate(projectilePrefab, transform.position + (Vector3)direction * 0.2f, Quaternion.identity);
+        // projectile.transform.rotation = transform.rotation;
+        projectile.GetComponent<Rigidbody2D>().AddForce(direction * force);
+       
     }
     }

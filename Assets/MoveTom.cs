@@ -97,7 +97,7 @@ public class MoveTom : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Sharonn")
+        if (other.gameObject.tag == "Sharonn" || other.gameObject.tag == "MarsBar")
         {
             if (lives > 0) {
                 DescraseLives();
