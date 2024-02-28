@@ -53,11 +53,6 @@ public class MoveTom : MonoBehaviour
         horizontal = 0.0f;
         vertical = 0.0f;
 
-        if (Keyboard.current.vKey.isPressed)
-        {
-            MakeDrunk();
-        }
-
         if (Keyboard.current.wKey.isPressed) {
             vertical = 1.0f;
         } else if (Keyboard.current.sKey.isPressed) {
