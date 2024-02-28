@@ -104,7 +104,12 @@ public class MoveTom : MonoBehaviour
             } else {
                 Destroy(gameObject);
             }
-       
+        }
+        
+        if (other.gameObject.tag == "FloorCone") 
+        {
+            DescraseLives(); 
+            Destroy(other.gameObject);
         }
     }
 
