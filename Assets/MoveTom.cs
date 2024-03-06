@@ -106,6 +106,12 @@ public class MoveTom : MonoBehaviour
                 Destroy(other.gameObject);
                 break;
         }
+
+        if (other.gameObject.tag == "Cocktail") 
+        {
+            MoveTom.instance.MakeDrunk();
+            Destroy(other.gameObject);
+        }
     }
 
     public void DescraseLives()
