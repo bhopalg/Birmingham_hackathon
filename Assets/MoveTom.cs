@@ -14,6 +14,7 @@ public class MoveTom : MonoBehaviour
     AudioClip clip2; 
     public AudioSource audio1;
     public AudioSource audio2;
+    public AudioSource audio3;
 
     private AudioSource source;
     private float movementSpeed = 2f;
@@ -45,6 +46,9 @@ public class MoveTom : MonoBehaviour
         launchAction.performed += Launch;
         score = 0;
         lives = 3;
+
+        // audio3.loop = true;
+        // audio3.Play();
     }
 
     public void MakeDrunk(){
