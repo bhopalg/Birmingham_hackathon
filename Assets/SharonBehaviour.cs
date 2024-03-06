@@ -68,15 +68,14 @@ private enum AttackType {
             Debug.Log("Sharon is attacking with a floor cone!");
             LayFloorCone();
             break;
-
         case AttackType.MarsBar:
-                Debug.Log("Sharon is attacking with a MarsBar!");
-                Launch();
-                break;
+            Debug.Log("Sharon is attacking with a MarsBar!");
+            LaunchMarsBar();
+            break;
         }
     }
 
-    void Launch()
+    void LaunchMarsBar()
     {
         Vector3 direction = playerTom.transform.position - transform.position;
         float force = 20;

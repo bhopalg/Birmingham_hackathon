@@ -92,19 +92,19 @@ public class MoveTom : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag == "Sharonn" || other.gameObject.tag == "MarsBar")
-        {
-            if (lives > 0) {
-                DescraseLives();
-            } else {
-                Destroy(gameObject);
-            }
-        }
-        
-        if (other.gameObject.tag == "FloorCone") 
-        {
-            DescraseLives(); 
-            Destroy(other.gameObject);
+        switch(other.gameObject.tag) {
+            case "Sharonn":
+                if (lives > 0) {
+                    DescraseLives();
+                }
+                break;
+            case "MarsBar":
+            case "FloorCone":
+                if (lives > 0) {
+                    DescraseLives();
+                }
+                Destroy(other.gameObject);
+                break;
         }
     }
 
