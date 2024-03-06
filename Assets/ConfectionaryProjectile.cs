@@ -18,13 +18,10 @@ public class ConfectionaryProjectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        // if (other.gameObject.tag == "Player")
-        // {
-        //     Destroy(this.gameObject);
-        // } else if (other.gameObject.tag != "Sharonn")
-        // {
-        //     Destroy(this.gameObject);
-        // }
+        if (other.gameObject.tag != "Sharonn")
+        {
+             Destroy(this.gameObject);
+        }
     }
 
 }
