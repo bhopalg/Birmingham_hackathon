@@ -104,17 +104,11 @@ public class MoveTom : MonoBehaviour
     {
         switch(other.gameObject.tag) {
             case "Sharonn":
-                if (lives > 0) {
-                    DescraseLives();
-                }
-                audio2.Play();
+                DecreaseLives();
                 break;
             case "MarsBar":
             case "FloorCone":
-                if (lives > 0) {
-                    DescraseLives();
-                }
-                audio2.Play();
+                DecreaseLives();
                 Destroy(other.gameObject);
                 break;
         }
@@ -126,16 +120,18 @@ public class MoveTom : MonoBehaviour
         }
     }
 
-    public void DescraseLives()
+    public void DecreaseLives()
     {
+        audio2.Play();
         lives--;
         UIHandler.instance.UpdateLives(lives);
 
         if (lives == 0)
         {
+            Debug.Log("Player is out of lives!");
             Destroy(gameObject);
         }
-    }
+}
 
     public void IncreaseScore(int amount)
     {
