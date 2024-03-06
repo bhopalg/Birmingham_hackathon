@@ -145,8 +145,8 @@ public class MoveTom : MonoBehaviour
     public void OnDisable()
     {
         launchAction.performed -= Launch;
-        if (UIHandler.instance != null) {
-            UIHandler.instance.GameOver(score);
+        if (GameOverUI.instance != null) {
+            GameOverUI.instance.GameOver(score);
         }
     }
 }
