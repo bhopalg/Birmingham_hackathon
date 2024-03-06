@@ -46,6 +46,9 @@ public class MoveTom : MonoBehaviour
         launchAction.performed += Launch;
         score = 0;
         lives = 3;
+
+        audio3.loop = true;
+        audio3.Play();
     }
 
     public void MakeDrunk(){
@@ -129,6 +132,7 @@ public class MoveTom : MonoBehaviour
         if (lives == 0)
         {
             Debug.Log("Player is out of lives!");
+            audio3.Stop();
             Destroy(gameObject);
         }
 }
