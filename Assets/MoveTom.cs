@@ -67,11 +67,11 @@ public class MoveTom : MonoBehaviour
 
         transform.position = transform.position + new Vector3(horizontal * movementSpeed * Time.deltaTime, vertical * movementSpeed * Time.deltaTime, 0);
 
-        if (Keyboard.current.leftArrowKey.isPressed)
+        if (Keyboard.current.qKey.isPressed)
         {
             transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
         }
-        else if (Keyboard.current.rightArrowKey.isPressed)
+        else if (Keyboard.current.eKey.isPressed)
         {
             transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
         }
