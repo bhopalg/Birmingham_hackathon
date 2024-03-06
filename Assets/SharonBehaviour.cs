@@ -5,8 +5,6 @@ using Random = System.Random;
 using System;
 public class SharonBehaviour : MonoBehaviour
 {
-    //movement speed in units per second
-    private float movementSpeed = 0.1f;
 
     private GameObject playerTom;
 
@@ -19,7 +17,7 @@ public class SharonBehaviour : MonoBehaviour
     private static Random rnd = new Random();
 
     private float lastAttackTime;
-    private    float birth = 0.0f;
+    private    float creationTime = 0.0f;
     private float age = 0.0f;
 
     private enum AttackType {
@@ -31,7 +29,7 @@ public class SharonBehaviour : MonoBehaviour
     void Start()
     {
         Debug.Log("Starting Sharon!");
-        birth = Time.realtimeSinceStartup;
+        creationTime = Time.realtimeSinceStartup;
         lastAttackTime = 0;
         playerTom = GameObject.FindGameObjectWithTag("Player");
     }
@@ -46,7 +44,8 @@ public class SharonBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.age=Time.realtimeSinceStartup-birth;
+        this.age=Time.realtimeSinceStartup-creationTime;
+        float movementSpeed = 0.05f + (age / 200.0f);
         if (playerTom == null){
             return;
         }
@@ -56,7 +55,9 @@ public class SharonBehaviour : MonoBehaviour
         //update the position
         transform.position = transform.position + new Vector3(difference.x * movementSpeed * Time.deltaTime, difference.y * movementSpeed * Time.deltaTime, 0);
 
-        if (age - lastAttackTime > 5.0f){
+        float attackPeriod = Mathf.Max(1.0f, 10.0f - (age / 10.0f));
+
+        if (age - lastAttackTime > attackPeriod){
             lastAttackTime = age;
             Debug.Log("Sharon is attacking!");
             Array values = AttackType.GetValues(typeof(AttackType));

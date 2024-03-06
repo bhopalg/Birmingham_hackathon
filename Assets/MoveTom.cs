@@ -46,9 +46,6 @@ public class MoveTom : MonoBehaviour
         launchAction.performed += Launch;
         score = 0;
         lives = 3;
-
-        // audio3.loop = true;
-        // audio3.Play();
     }
 
     public void MakeDrunk(){
