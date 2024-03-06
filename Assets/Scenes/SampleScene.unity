@@ -156,7 +156,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorConePrefab: {fileID: 5339045536596939302, guid: 498a12b465242487aa0c50bab69f3b53, type: 3}
-  projectilePrefab: {fileID: 2837019116121012472, guid: e2204f70f8c19ca4c873033398e3e85d, type: 3}
+  marsBarPrefab: {fileID: 2837019116121012472, guid: e2204f70f8c19ca4c873033398e3e85d, type: 3}
+  cocktailPrefab: {fileID: 5204218049401896795, guid: 9072cfe6986da4304b194818243a1b9b, type: 3}
 --- !u!212 &17776731
 SpriteRenderer:
   m_ObjectHideFlags: 0
