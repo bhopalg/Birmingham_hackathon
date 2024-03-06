@@ -8,6 +8,8 @@ TagManager:
   - FloorCone
   - MarsBar
   - Cocktail
+  - Undefined
+  - Pineapple
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5111395160552678568}
   m_Layer: 7
   m_Name: Pineapple
-  m_TagString: Untagged
+  m_TagString: Pineapple
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.19, y: 11}
+    oldSize: {x: 3.75, y: 6.66}
     newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
