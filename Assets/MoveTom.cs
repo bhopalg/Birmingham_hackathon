@@ -45,6 +45,7 @@ public class MoveTom : MonoBehaviour
         launchAction.performed += Launch;
         score = 0;
         lives = 3;
+        source = GetComponent<AudioSource>();
     }
 
     public void MakeDrunk(){
