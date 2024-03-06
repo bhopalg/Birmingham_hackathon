@@ -38,30 +38,5 @@ public class UIHandler : MonoBehaviour
         livesLabel.text = "Lives: " + lives;
     }
 
-    public void GameOver(int score)
-    {
-        scoreLabel.text = "Game Over";
 
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        VisualElement gameOverBoxBackground = uiDocument.rootVisualElement.Q<VisualElement>("GameOverBoxBackground");
-        gameOverBoxBackground.style.display = DisplayStyle.Flex;
-        Label finalScoreLabel = gameOverBoxBackground.Q<VisualElement>("FinalScoreBoxLabel").Q<Label>();
-        finalScoreLabel.text = "Final Score: " + score;
-
-        Button startNewGameButton = uiDocument.rootVisualElement.Q<Button>("StartNewGameButton");
-        startNewGameButton.RegisterCallback<ClickEvent>(ev => StartNewGame());
-
-        Button quitButton = uiDocument.rootVisualElement.Q<Button>("QuitButton");
-        quitButton.RegisterCallback<ClickEvent>(ev => QuitGame());
-    }
-
-    public void StartNewGame()
-    {
-        SceneManager.LoadScene("office");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
 }
