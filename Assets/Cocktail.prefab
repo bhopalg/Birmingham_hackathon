@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -2913275683898686721}
   - component: {fileID: 7750338674653879979}
   - component: {fileID: -3780409886117909123}
+  - component: {fileID: -8460556460128464250}
   m_Layer: 8
   m_Name: Cocktail
   m_TagString: Cocktail
@@ -158,3 +159,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.66, y: 10}
   m_EdgeRadius: 0
+--- !u!114 &-8460556460128464250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5204218049401896795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb3c2b1d332a55c46abf408d7bff4be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

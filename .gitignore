@@ -58,3 +58,6 @@ crashlytics-build.properties
 Thumbs.db
 Desktop.ini
 .vscode/
+.plastic/plastic.changes
+.plastic/plastic.wktree
+.plastic/plastic.wktree
