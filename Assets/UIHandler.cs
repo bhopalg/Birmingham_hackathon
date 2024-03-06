@@ -50,10 +50,18 @@ public class UIHandler : MonoBehaviour
 
         Button startNewGameButton = uiDocument.rootVisualElement.Q<Button>("StartNewGameButton");
         startNewGameButton.RegisterCallback<ClickEvent>(ev => StartNewGame());
+
+        Button quitButton = uiDocument.rootVisualElement.Q<Button>("QuitButton");
+        quitButton.RegisterCallback<ClickEvent>(ev => QuitGame());
     }
 
     public void StartNewGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("office");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
