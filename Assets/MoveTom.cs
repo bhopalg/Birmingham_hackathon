@@ -10,6 +10,7 @@ public class MoveTom : MonoBehaviour
     private int score;
     private int lives;
 
+    private AudioSource source;
     private float movementSpeed = 2f;
     float horizontal;
     float vertical;
@@ -39,6 +40,7 @@ public class MoveTom : MonoBehaviour
         launchAction.performed += Launch;
         score = 0;
         lives = 3;
+        source = GetComponent<AudioSource>();
     }
 
     public void MakeDrunk(){
@@ -86,7 +88,11 @@ public class MoveTom : MonoBehaviour
             GameObject projectile = Instantiate(projectilePrefab, transform.position + (Vector3)direction * 0.5f, Quaternion.identity);
             projectile.transform.rotation = transform.rotation;
             projectile.GetComponent<Rigidbody2D>().AddForce(direction * force);
+            Debug.Log("Pineapple launched");
+            source.Play();
         }
+
+       
     }
 
 
