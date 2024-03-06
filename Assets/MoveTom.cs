@@ -25,9 +25,15 @@ public class MoveTom : MonoBehaviour
     public GameObject projectilePrefab;
     public GameObject vignettePrefab;
 
+    public GameObject coffeePrefab;
+
     private GameObject vignette;
 
     public InputAction launchAction;
+
+    private bool powerupPresent = false;
+
+    private float coffeeStarted = 0;
     
     private void Awake()
     {
@@ -85,6 +91,13 @@ public class MoveTom : MonoBehaviour
         {
             transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
         }
+
+        if (Time.realtimeSinceStartup-coffeeStarted > 10) {
+                ResetMovementSpeed();
+                powerupPresent = false;
+        }
+
+        GeneratePowerup();
     }
 
     void Launch(InputAction.CallbackContext context)
@@ -112,6 +125,10 @@ public class MoveTom : MonoBehaviour
             case "MarsBar":
             case "FloorCone":
                 DecreaseLives();
+                Destroy(other.gameObject);
+                break;
+            case "Coffee":
+                SpeedUpTom();
                 Destroy(other.gameObject);
                 break;
         }
@@ -148,6 +165,36 @@ public class MoveTom : MonoBehaviour
         launchAction.performed -= Launch;
         if (GameOverUI.instance != null) {
             GameOverUI.instance.GameOver(score);
+        }
+    }
+
+public void SpeedUpTom() {
+    Debug.Log("Speeding up Tom");
+        movementSpeed = 4f;
+    }
+
+
+    public void ResetMovementSpeed() {
+        movementSpeed = 2f;
+    }
+
+    public void GeneratePowerup() {
+        if (!powerupPresent) {
+            int xSpawnCoords;
+            int ySpawnCoords;
+            System.Random random = new System.Random();
+            Debug.Log("Generating co-ordinates");
+            if (random.Next() > 0) {
+                xSpawnCoords = random.Next(-14, 9);
+                ySpawnCoords = random.Next(-1, 3);
+            } else {
+                xSpawnCoords = random.Next(-6, 0);
+                ySpawnCoords = random.Next(-8, -2);
+            }
+            Debug.Log("Rendering Object");
+            GameObject powerUp = Instantiate(coffeePrefab, new Vector3(xSpawnCoords, ySpawnCoords), Quaternion.identity);
+            coffeeStarted = Time.realtimeSinceStartup;
+            powerupPresent = true;
         }
     }
 }
