@@ -1,8 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="ScoreBoxBackground" style="flex-grow: 0; background-color: rgb(4, 30, 66); flex-shrink: 1; width: 200px; height: 50px;">
-        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreBoxLabel" style="font-size: 32px; color: rgb(255, 255, 255);" />
-    </ui:VisualElement>
-    <ui:VisualElement name="LivesBoxBackground" style="flex-grow: 0; background-color: rgb(4, 30, 66); flex-shrink: 1; width: 200px; height: 50px;">
-        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LivesBoxLabel" style="font-size: 32px; color: rgb(255, 255, 255);" />
-    </ui:VisualElement>
+    <ui:GroupBox style="justify-content: flex-start; flex-direction: column; bottom: 0; align-items: flex-start; align-self: flex-start; position: absolute; font-size: 50px; color: rgb(255, 255, 255);">
+        <ui:VisualElement name="ScoreBoxBackground" style="flex-grow: 0; background-color: rgb(4, 30, 66); flex-shrink: 1;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ScoreBoxLabel" />
+        </ui:VisualElement>
+        <ui:VisualElement name="LivesBoxBackground" style="flex-grow: 0; background-color: rgb(4, 30, 66); flex-shrink: 1;">
+            <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LivesBoxLabel" />
+        </ui:VisualElement>
+    </ui:GroupBox>
 </ui:UXML>
