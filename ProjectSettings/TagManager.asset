@@ -19,10 +19,10 @@ TagManager:
   - 
   - Water
   - UI
-  - Character
-  - Projectile
-  - Eight
-  - Nine
+  - Player
+  - PlayerProjectile
+  - EnemyProjectile
+  - Enemy
   - Post Processing
   - 
   - 
