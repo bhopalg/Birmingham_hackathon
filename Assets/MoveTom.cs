@@ -29,11 +29,17 @@ public class MoveTom : MonoBehaviour
 
     private GameObject vignette;
 
+    public GameObject goldenpinepplePrefab;
+
     public InputAction launchAction;
 
-    private bool powerupPresent = false;
+    private bool coffeePowerupPresent;
+
+    private bool pineapplePowerupPresent;
 
     private float coffeeStarted = 0;
+
+    private float goldenpineappleStarted = 0;
     
     private void Awake()
     {
@@ -92,9 +98,9 @@ public class MoveTom : MonoBehaviour
             transform.Rotate(0, 0, -rotationSpeed * Time.deltaTime);
         }
 
-        if (Time.realtimeSinceStartup-coffeeStarted > 10) {
+        if (coffeePowerupPresent && Time.realtimeSinceStartup-coffeeStarted > 10) {
                 ResetMovementSpeed();
-                powerupPresent = false;
+                coffeePowerupPresent = false;
         }
 
         GeneratePowerup();
@@ -130,7 +136,14 @@ public class MoveTom : MonoBehaviour
             case "Coffee":
                 SpeedUpTom();
                 Destroy(other.gameObject);
+                coffeePowerupPresent = false;
                 break;
+            case "Goldenpineapple":
+                IncreaseLives();
+                Destroy(other.gameObject);
+                pineapplePowerupPresent = false;
+                break;
+                
         }
 
         if (other.gameObject.tag == "Cocktail") 
@@ -153,6 +166,15 @@ public class MoveTom : MonoBehaviour
             Destroy(gameObject);
         }
 }
+
+    public void IncreaseLives()
+    {
+        if (lives != 0)
+        {
+        lives++;
+        UIHandler.instance.UpdateLives(lives);
+        }
+    }
 
     public void IncreaseScore(int amount)
     {
@@ -179,36 +201,48 @@ public void SpeedUpTom() {
     }
 
     public void GeneratePowerup() {
+        bool powerupPresent = coffeePowerupPresent || pineapplePowerupPresent;
         if (!powerupPresent) {
             // decide which powerup to put out
             System.Random random = new System.Random();
             int number = random.Next(0, 50);
+            int[] coords = getPowerCoords(); 
+            int xSpawnCoords = coords[0];
+            int ySpawnCoords = coords[1];
 
-            if (number == 20) {
+            if (number > 47) {
                 // we're gonna do a pineapple
+                Debug.Log("Rendering Golden Pineapple");
+                GameObject powerUp = Instantiate(goldenpinepplePrefab, new Vector3(xSpawnCoords, ySpawnCoords), Quaternion.identity);
+                goldenpineappleStarted = Time.realtimeSinceStartup;
+                pineapplePowerupPresent = true;
             } else if (number < 5) {
                 // we're gonna do a coffee
-                
-                int xSpawnCoords;
-                int ySpawnCoords;
-                
-                Debug.Log("Generating co-ordinates");
-                if (random.Next() > 0) {
-                    xSpawnCoords = random.Next(-14, 9);
-                    ySpawnCoords = random.Next(-1, 3);
-                } else {
-                    xSpawnCoords = random.Next(-6, 0);
-                    ySpawnCoords = random.Next(-8, -2);
-                }
-                Debug.Log("Rendering Object");
+                Debug.Log("Rendering Coffee");
                 GameObject powerUp = Instantiate(coffeePrefab, new Vector3(xSpawnCoords, ySpawnCoords), Quaternion.identity);
                 coffeeStarted = Time.realtimeSinceStartup;
-                powerupPresent = true;
+                coffeePowerupPresent = true;
             }
-
-
         }
     }
 
+  
 
+    public int[] getPowerCoords()
+    { 
+        int xSpawnCoords;
+        int ySpawnCoords;
+        System.Random random = new System.Random();
+        Debug.Log("Generating co-ordinates");
+        if (random.Next() > 0) {
+            xSpawnCoords = random.Next(-14, 9);
+            ySpawnCoords = random.Next(-1, 3);
+        } else {
+            xSpawnCoords = random.Next(-6, 0);
+            ySpawnCoords = random.Next(-8, -2);
+        }
+        return new []{xSpawnCoords, ySpawnCoords};
+
+
+    }   
 }
