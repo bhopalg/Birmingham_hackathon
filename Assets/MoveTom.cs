@@ -180,21 +180,35 @@ public void SpeedUpTom() {
 
     public void GeneratePowerup() {
         if (!powerupPresent) {
-            int xSpawnCoords;
-            int ySpawnCoords;
+            // decide which powerup to put out
             System.Random random = new System.Random();
-            Debug.Log("Generating co-ordinates");
-            if (random.Next() > 0) {
-                xSpawnCoords = random.Next(-14, 9);
-                ySpawnCoords = random.Next(-1, 3);
-            } else {
-                xSpawnCoords = random.Next(-6, 0);
-                ySpawnCoords = random.Next(-8, -2);
+            int number = random.Next(0, 50);
+
+            if (number == 20) {
+                // we're gonna do a pineapple
+            } else if (number < 5) {
+                // we're gonna do a coffee
+                
+                int xSpawnCoords;
+                int ySpawnCoords;
+                
+                Debug.Log("Generating co-ordinates");
+                if (random.Next() > 0) {
+                    xSpawnCoords = random.Next(-14, 9);
+                    ySpawnCoords = random.Next(-1, 3);
+                } else {
+                    xSpawnCoords = random.Next(-6, 0);
+                    ySpawnCoords = random.Next(-8, -2);
+                }
+                Debug.Log("Rendering Object");
+                GameObject powerUp = Instantiate(coffeePrefab, new Vector3(xSpawnCoords, ySpawnCoords), Quaternion.identity);
+                coffeeStarted = Time.realtimeSinceStartup;
+                powerupPresent = true;
             }
-            Debug.Log("Rendering Object");
-            GameObject powerUp = Instantiate(coffeePrefab, new Vector3(xSpawnCoords, ySpawnCoords), Quaternion.identity);
-            coffeeStarted = Time.realtimeSinceStartup;
-            powerupPresent = true;
+
+
         }
     }
+
+
 }
