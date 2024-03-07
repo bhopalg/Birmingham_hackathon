@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3001310255122049948}
   - component: {fileID: 3655554437047089041}
   - component: {fileID: 7139861688842017477}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: FloorCone
   m_TagString: FloorCone
   m_Icon: {fileID: 0}
