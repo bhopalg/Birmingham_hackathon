@@ -40,6 +40,8 @@ public class MoveTom : MonoBehaviour
     private float coffeeStarted = 0;
 
     private float goldenpineappleStarted = 0;
+
+    private float lastPowerupTime = 0;
     
     private void Awake()
     {
@@ -100,10 +102,13 @@ public class MoveTom : MonoBehaviour
 
         if (coffeePowerupPresent && Time.realtimeSinceStartup-coffeeStarted > 10) {
                 ResetMovementSpeed();
-                coffeePowerupPresent = false;
+                // coffeePowerupPresent = false;
         }
 
-        GeneratePowerup();
+        if (!coffeePowerupPresent && !pineapplePowerupPresent && Time.realtimeSinceStartup-lastPowerupTime > 1) {
+            GeneratePowerup();
+            lastPowerupTime = Time.realtimeSinceStartup;
+        }
     }
 
     void Launch(InputAction.CallbackContext context)
@@ -210,7 +215,7 @@ public void SpeedUpTom() {
             int xSpawnCoords = coords[0];
             int ySpawnCoords = coords[1];
 
-            if (number > 47) {
+            if (number > 48) {
                 // we're gonna do a pineapple
                 Debug.Log("Rendering Golden Pineapple");
                 GameObject powerUp = Instantiate(goldenpinepplePrefab, new Vector3(xSpawnCoords, ySpawnCoords), Quaternion.identity);
